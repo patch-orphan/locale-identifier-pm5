@@ -1,0 +1,16 @@
+Lingua::Tag Installation
+
+# install via cpanminus
+cpanm Lingua::Tag
+
+# install via CPAN shell
+cpan Lingua::Tag
+
+# install via ActivePerl
+ppm install Lingua::Tag
+
+# install manually
+perl Build.PL
+./Build
+./Build test
+./Build install
