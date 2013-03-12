@@ -33,17 +33,40 @@ This document describes Lingua::Tag version 0.00_1.
 
 ...
 
+=head2 Attributes
+
+=over
+
+=item primary_language
+
+=item extended_language
+
+=item script
+
+=item region
+
+=item variant
+
+=item extension
+
+=item private_use
+
+=back
+
 =head1 SEE ALSO
 
 =over
 
-=item * BCP 47: Tags for Identifying Languages I<L<http://tools.ietf.org/rfc/bcp/bcp47.txt>>
+=item * BCP 47: Tags for Identifying Languages –
+<http://tools.ietf.org/rfc/bcp/bcp47.txt>
 
-=item * Language Tags I<L<http://www.langtag.net/>>
+=item * Language Tags – <http://www.langtag.net/>
 
-=item * Language tags in HTML and XML I<L<http://www.w3.org/International/articles/language-tags/Overview.en.php>>
+=item * Language tags in HTML and XML –
+<http://www.w3.org/International/articles/language-tags/Overview.en.php>
 
-=item * Language Subtag Registry I<L<http://www.iana.org/assignments/language-subtag-registry>>
+=item * Language Subtag Registry –
+<http://www.iana.org/assignments/language-subtag-registry>
 
 =back
 
