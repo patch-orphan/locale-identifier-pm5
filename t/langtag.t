@@ -2,66 +2,66 @@ use strict;
 use warnings;
 use utf8;
 use Test::More tests => 30;
-use Lingua::Tag;
+use Locale::Identifier;
 
-my $tag;
+my $locale;
 
-$tag = Lingua::Tag->new('en');
-can $tag, 'primary_language';
-can $tag, 'canextended_language';
-can $tag, 'script';
-can $tag, 'region';
-can $tag, 'variant';
-can $tag, 'extension';
-can $tag, 'private_use';
-is $tag->primary_language, 'en';
-ok !defined $tag->canextended_language;
-ok !defined $tag->script;
-ok !defined $tag->region;
-ok !defined $tag->variant;
-ok !defined $tag->extension;
-ok !defined $tag->private_use;
+$locale = Locale::Identifier->new('en');
+can $locale, 'primary_language';
+can $locale, 'canextended_language';
+can $locale, 'script';
+can $locale, 'region';
+can $locale, 'variant';
+can $locale, 'extension';
+can $locale, 'private_use';
+is $locale->primary_language, 'en';
+ok !defined $locale->canextended_language;
+ok !defined $locale->script;
+ok !defined $locale->region;
+ok !defined $locale->variant;
+ok !defined $locale->extension;
+ok !defined $locale->private_use;
 
-$tag = Lingua::Tag->new('en-US');
-is $tag->primary_language, 'en';
-is $tag->region,           'US';
+$locale = Locale::Identifier->new('en-US');
+is $locale->primary_language, 'en';
+is $locale->region,           'US';
 
-$tag = Lingua::Tag->new('ar-Cyrl-CO');
-is $tag->primary_language, 'ar';
-is $tag->script,           'Cyrl';
-is $tag->region,           'CO';
+$locale = Locale::Identifier->new('ar-Cyrl-CO');
+is $locale->primary_language, 'ar';
+is $locale->script,           'Cyrl';
+is $locale->region,           'CO';
 
-$tag = Lingua::Tag->new('tlh-Kore-AQ-fonipa');
-is $tag->primary_language, 'tlh';
-is $tag->script,           'Kore';
-is $tag->region,           'AQ';
-is $tag->variant,          'fonipa';
+$locale = Locale::Identifier->new('tlh-Kore-AQ-fonipa');
+is $locale->primary_language, 'tlh';
+is $locale->script,           'Kore';
+is $locale->region,           'AQ';
+is $locale->variant,          'fonipa';
 
-$tag = Lingua::Tag->new('TLH-kORE-aq-FONIPA');
-is $tag->primary_language, 'tlh';
-is $tag->script,           'Kore';
-is $tag->region,           'AQ';
-is $tag->variant,          'fonipa';
+$locale = Locale::Identifier->new('TLH-kORE-aq-FONIPA');
+is $locale->primary_language, 'tlh';
+is $locale->script,           'Kore';
+is $locale->region,           'AQ';
+is $locale->variant,          'fonipa';
 
-$tag = Lingua::Tag->new(
+$locale = Locale::Identifier->new(
     primary_language => 'ar',
     script           => 'Cyrl',
     region           => 'CO',
 );
-is $tag->tag, 'ar-Cyrl-CO';
+is $locale->tag, 'ar-Cyrl-CO';
 
-$tag = Lingua::Tag->new(
+$locale = Locale::Identifier->new(
     primary_language => 'tlh',
     script           => 'Kore',
     region           => 'AQ',
     variant          => 'fonipa',
 );
-is $tag->tag, 'tlh-Kore-AQ-fonipa';
+is $locale->tag, 'tlh-Kore-AQ-fonipa';
 
-$tag = Lingua::Tag->new(
+$locale = Locale::Identifier->new(
     primary_language => 'TLH',
     script           => 'kORE',
     region           => 'aq',
     variant          => 'FONIPA',
 );
-is $tag->tag, 'tlh-Kore-AQ-fonipa';
+is $locale->tag, 'tlh-Kore-AQ-fonipa';

@@ -3,7 +3,7 @@ use warnings;
 use Module::Build;
 
 my $builder = Module::Build->new(
-    module_name    => 'Lingua::Tag',
+    module_name    => 'Locale::Identifier',
     license        => 'perl',
     create_license => 1,
     create_readme  => 1,
@@ -18,9 +18,9 @@ my $builder = Module::Build->new(
     },
     meta_merge => {
         resources => {
-            repository => 'git://github.com/patch/lingua-tag-pm5.git',
-            homepage   => 'https://github.com/patch/lingua-tag-pm5',
-            bugtracker => 'https://github.com/patch/lingua-tag-pm5/issues',
+            repository => 'git://github.com/patch/locale-identifier-pm5.git',
+            homepage   => 'https://github.com/patch/locale-identifier-pm5',
+            bugtracker => 'https://github.com/patch/locale-identifier-pm5/issues',
         },
     },
 );

@@ -1,4 +1,4 @@
-package Lingua::Tag;
+package Locale::Identifier;
 
 use 5.006;
 use strict;
@@ -15,19 +15,20 @@ __END__
 
 =head1 NAME
 
-Lingua::Tag - IETF language tag (BCP 47) parser and generator
+Locale::Identifier - Locale identifier parser and formatter
 
 =head1 VERSION
 
-This document describes Lingua::Tag version 0.00_1.
+This document describes Locale::Identifier version 0.00_1.
 
 =head1 SYNOPSIS
 
-    use Lingua::Tag;
+    use Locale::Identifier;
 
-    my $lang_tag = Lingua::Tag->new('fr-CA');
-    my $language = $land_tag->language;  # fr
-    my $region   = $land_tag->region;    # CA
+    $locale = Locale::Identifier->new('fr-CA');
+
+    say $locale->language;  # fr
+    say $locale->region;    # CA
 
 =head1 DESCRIPTION
 
@@ -57,6 +58,9 @@ This document describes Lingua::Tag version 0.00_1.
 
 =over
 
+=item * Unicode Language and Locale Identifiers –
+<http://unicode.org/reports/tr35/#Unicode_Language_and_Locale_Identifiers>
+
 =item * BCP 47: Tags for Identifying Languages –
 <http://tools.ietf.org/rfc/bcp/bcp47.txt>
 
@@ -76,7 +80,7 @@ Nick Patch <patch@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-© 2013 Nick Patch
+© 2013–2015 Nick Patch
 
 This library is free software; you can redistribute it and/or modify it under
 the same terms as Perl itself.

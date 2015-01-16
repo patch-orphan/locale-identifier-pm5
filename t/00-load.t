@@ -3,6 +3,6 @@ use warnings;
 use utf8;
 use Test::More tests => 1;
 
-BEGIN { use_ok 'Lingua::Tag' }
+BEGIN { use_ok 'Locale::Identifier' }
 
-diag "Testing Lingua::Tag $Lingua::Tag::VERSION, Perl $], $^X";
+diag "Testing Locale::Identifier $Locale::Identifier::VERSION, Perl $], $^X";

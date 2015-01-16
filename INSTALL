@@ -1,13 +1,13 @@
-Lingua::Tag Installation
+Locale::Identifier Installation
 
 # install via cpanminus
-cpanm Lingua::Tag
+cpanm Locale::Identifier
 
 # install via CPAN shell
-cpan Lingua::Tag
+cpan Locale::Identifier
 
 # install via ActivePerl
-ppm install Lingua::Tag
+ppm install Locale::Identifier
 
 # install manually
 perl Build.PL
