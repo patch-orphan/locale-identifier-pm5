@@ -8,6 +8,57 @@ use namespace::clean;
 
 our $VERSION = '0.00_1';
 
+has id => (
+    is      => 'ro',
+    trigger => 1,
+);
+
+has language => (
+    is => 'rwp',
+);
+
+has script => (
+    is => 'rwp',
+);
+
+has region => (
+    is => 'rwp',
+);
+
+sub BUILDARGS {
+    my ($class, @args) = @_;
+
+    return { id => $args[0] }
+        if @args == 1 && !ref $args[0];
+
+    return { @args };
+}
+
+sub _trigger_id {
+    my ($self, $id) = @_;
+
+    $id =~ tr{_}{-};
+
+    my ($language, $script, $region) = $id =~ m{
+        ^     ( [a-z]{2,8}          )     # language
+        (?: - ( [a-z]{4}            ) )?  # script
+        (?: - ( [a-z]{2} | [0-9]{3} ) )?  # region
+        \b
+    }xi;
+
+    if ($language) {
+        $self->_set_language($language);
+    }
+
+    if ($script) {
+        $self->_set_script($script);
+    }
+
+    if ($region) {
+        $self->_set_region($region);
+    }
+}
+
 1;
 
 __END__

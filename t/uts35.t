@@ -40,7 +40,7 @@ subtest 'es-419' => sub {
     plan tests => 4;
     my $locale = Locale::Identifier->new('es-419');
     is $locale->id,       'es-419', 'id';
-    is $locale->language, 'en',     'language';
+    is $locale->language, 'es',     'language';
     is $locale->script,   undef,    'script';
     is $locale->region,   '419',    'region';
 };
