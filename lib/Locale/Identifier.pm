@@ -9,54 +9,37 @@ use namespace::clean;
 our $VERSION = '0.00_1';
 
 has id => (
-    is      => 'ro',
-    trigger => 1,
+    is => 'ro',
 );
 
 has language => (
-    is => 'rwp',
+    is => 'ro',
 );
 
 has script => (
-    is => 'rwp',
+    is => 'ro',
 );
 
 has region => (
-    is => 'rwp',
+    is => 'ro',
 );
 
-sub BUILDARGS {
-    my ($class, @args) = @_;
-
-    return { id => $args[0] }
-        if @args == 1 && !ref $args[0];
-
-    return { @args };
-}
-
-sub _trigger_id {
-    my ($self, $id) = @_;
-
-    $id =~ tr{_}{-};
+sub from_string {
+    my ($class, $id) = @_;
 
     my ($language, $script, $region) = $id =~ m{
-        ^     ( [a-z]{2,8}          )     # language
-        (?: - ( [a-z]{4}            ) )?  # script
-        (?: - ( [a-z]{2} | [0-9]{3} ) )?  # region
-        \b
+        ^        ( [a-z]{2,8}          )     # language
+        (?: [_-] ( [a-z]{4}            ) )?  # script
+        (?: [_-] ( [a-z]{2} | [0-9]{3} ) )?  # region
+        (?= _ | \b )
     }xi;
 
-    if ($language) {
-        $self->_set_language($language);
-    }
-
-    if ($script) {
-        $self->_set_script($script);
-    }
-
-    if ($region) {
-        $self->_set_region($region);
-    }
+    $class->new(
+        id       => $id,
+        language => $language,
+        script   => $script,
+        region   => $region,
+    )
 }
 
 1;
