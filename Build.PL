@@ -1,20 +1,30 @@
+use utf8;
 use strict;
 use warnings;
+use open qw( :encoding(UTF-8) :std );
 use Module::Build;
 
 my $builder = Module::Build->new(
-    module_name    => 'Locale::Identifier',
-    license        => 'perl',
-    create_license => 1,
-    create_readme  => 1,
+    module_name   => 'Locale::Identifier',
+    license       => 'Perl_5',
+    create_readme => 1,
     configure_requires => {
-        'Module::Build' => 0.36,
+        'Module::Build'     => '0.4004',
+        'Software::License' => 0,
     },
     build_requires => {
-        'Test::More' => 0.41,  # diag()
+        'Pod::Man' => '2.04',
+    },
+    test_requires => {
+        'open'       => 0,
+        'English'    => 0,
+        'Test::Most' => '0.22',
     },
     requires => {
-        'perl' => '5.6.0',
+        'perl'             => '5.8.1',
+        'namespace::clean' => 0,
+        'utf8'             => 0,
+        'Moo'              => '1.001000',
     },
     meta_merge => {
         resources => {

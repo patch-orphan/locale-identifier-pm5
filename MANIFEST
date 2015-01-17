@@ -1,0 +1,9 @@
+Build.PL
+Changes
+INSTALL
+lib/Locale/Identifier.pm
+MANIFEST			This list of files
+README.md
+t/00-load.t
+t/langtag.t
+t/uts35.t

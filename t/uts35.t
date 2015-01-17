@@ -1,7 +1,6 @@
 use utf8;
-use strict;
-use warnings;
-use Test::More tests => 13;
+use open qw( :encoding(UTF-8) :std );
+use Test::Most tests => 13;
 use Locale::Identifier;
 
 # Tests adapted from examples in:

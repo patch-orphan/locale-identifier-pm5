@@ -1,8 +1,14 @@
-use strict;
-use warnings;
 use utf8;
-use Test::More tests => 1;
+use open qw( :encoding(UTF-8) :std );
+use English;
+use Test::Most tests => 2;
 
 BEGIN { use_ok 'Locale::Identifier' }
 
-diag "Testing Locale::Identifier $Locale::Identifier::VERSION, Perl $], $^X";
+diag join ', ' => (
+    "Locale::Identifier v$Locale::Identifier::VERSION",
+    "Moo v$Moo::VERSION",
+    "Perl $PERL_VERSION ($EXECUTABLE_NAME)",
+);
+
+my $obj = new_ok 'Locale::Identifier';

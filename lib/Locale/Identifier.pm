@@ -1,9 +1,10 @@
 package Locale::Identifier;
 
-use 5.006;
-use strict;
-use warnings;
+use v5.8.1;
 use utf8;
+
+use Moo;
+use namespace::clean;
 
 our $VERSION = '0.00_1';
 
@@ -19,7 +20,7 @@ Locale::Identifier - Locale identifier parser and formatter
 
 =head1 VERSION
 
-This document describes Locale::Identifier version 0.00_1.
+This document describes Locale::Identifier v0.00_1.
 
 =head1 SYNOPSIS
 
@@ -58,19 +59,19 @@ This document describes Locale::Identifier version 0.00_1.
 
 =over
 
-=item * Unicode Language and Locale Identifiers –
-<http://unicode.org/reports/tr35/#Unicode_Language_and_Locale_Identifiers>
+=item * L<Unicode Language and Locale
+Identifiers|http://unicode.org/reports/tr35/#Unicode_Language_and_Locale_Identifiers>
 
-=item * BCP 47: Tags for Identifying Languages –
-<http://tools.ietf.org/rfc/bcp/bcp47.txt>
+=item * L<BCP 47: Tags for Identifying
+Languages|http://tools.ietf.org/rfc/bcp/bcp47.txt>
 
-=item * Language Tags – <http://www.langtag.net/>
+=item * L<Language Tags|http://www.langtag.net/>
 
-=item * Language tags in HTML and XML –
-<http://www.w3.org/International/articles/language-tags/Overview.en.php>
+=item * L<Language tags in HTML and
+XML|http://www.w3.org/International/articles/language-tags/Overview.en.php>
 
-=item * Language Subtag Registry –
-<http://www.iana.org/assignments/language-subtag-registry>
+=item * L<Language Subtag
+Registry|http://www.iana.org/assignments/language-subtag-registry>
 
 =back
 
