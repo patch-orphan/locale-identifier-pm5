@@ -14,5 +14,7 @@ diag join ', ' => (
 my $obj = new_ok 'Unicode::Locale';
 
 can_ok $obj, qw(
-    new from_string id language script region
+    new
+    language script region
+    from_string to_string
 );

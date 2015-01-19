@@ -9,127 +9,127 @@ use Unicode::Locale;
 
 # 3.1 Unicode Language Identifier
 
-subtest 'root' => sub {
+subtest "from_string('root')" => sub {
     plan tests => 4;
     my $locale = Unicode::Locale->from_string('root');
-    is $locale->id,       'root', 'id';
-    is $locale->language, 'root', 'language';
-    is $locale->script,   undef,  'script';
-    is $locale->region,   undef,  'region';
+    is $locale->language,  'root', 'language';
+    is $locale->script,    undef,  'script';
+    is $locale->region,    undef,  'region';
+    is $locale->to_string, 'root', 'to_string';
 };
 
-subtest 'en-US' => sub {
+subtest "from_string('en-US')" => sub {
     plan tests => 4;
     my $locale = Unicode::Locale->from_string('en-US');
-    is $locale->id,       'en-US', 'id';
-    is $locale->language, 'en',    'language';
-    is $locale->script,   undef,   'script';
-    is $locale->region,   'US',    'region';
+    is $locale->language,  'en',    'language';
+    is $locale->script,    undef,   'script';
+    is $locale->region,    'US',    'region';
+    is $locale->to_string, 'en_US', 'to_string';
 };
 
-subtest 'en_GB' => sub {
+subtest "from_string('en_GB')" => sub {
     plan tests => 4;
     my $locale = Unicode::Locale->from_string('en_GB');
-    is $locale->id,       'en_GB', 'id';
-    is $locale->language, 'en',    'language';
-    is $locale->script,   undef,   'script';
-    is $locale->region,   'GB',    'region';
+    is $locale->language,  'en',    'language';
+    is $locale->script,    undef,   'script';
+    is $locale->region,    'GB',    'region';
+    is $locale->to_string, 'en_GB', 'to_string';
 };
 
-subtest 'es-419' => sub {
+subtest "from_string('es-419')" => sub {
     plan tests => 4;
     my $locale = Unicode::Locale->from_string('es-419');
-    is $locale->id,       'es-419', 'id';
-    is $locale->language, 'es',     'language';
-    is $locale->script,   undef,    'script';
-    is $locale->region,   '419',    'region';
+    is $locale->language,  'es',     'language';
+    is $locale->script,    undef,    'script';
+    is $locale->region,    '419',    'region';
+    is $locale->to_string, 'es_419', 'to_string';
 };
 
-subtest 'uz-Cyrl' => sub {
+subtest "from_string('uz-Cyrl')" => sub {
     plan tests => 4;
     my $locale = Unicode::Locale->from_string('uz-Cyrl');
-    is $locale->id,       'uz-Cyrl', 'id';
-    is $locale->language, 'uz',      'language';
-    is $locale->script,   'Cyrl',    'script';
-    is $locale->region,   undef,     'region';
+    is $locale->language,  'uz',      'language';
+    is $locale->script,    'Cyrl',    'script';
+    is $locale->region,    undef,     'region';
+    is $locale->to_string, 'uz_Cyrl', 'to_string';
 };
 
 # 3.4 Language Identifier Field Definitions
 
-subtest 'en' => sub {
+subtest "from_string('en')" => sub {
     plan tests => 4;
     my $locale = Unicode::Locale->from_string('en');
-    is $locale->id,       'en',  'id';
-    is $locale->language, 'en',  'language';
-    is $locale->script,   undef, 'script';
-    is $locale->region,   undef, 'region';
+    is $locale->language,  'en',  'language';
+    is $locale->script,    undef, 'script';
+    is $locale->region,    undef, 'region';
+    is $locale->to_string, 'en',  'to_string';
 };
 
-subtest 'fr_BE' => sub {
+subtest "from_string('fr_BE')" => sub {
     plan tests => 4;
     my $locale = Unicode::Locale->from_string('fr_BE');
-    is $locale->id,       'fr_BE', 'id';
-    is $locale->language, 'fr',    'language';
-    is $locale->script,   undef,   'script';
-    is $locale->region,   'BE',    'region';
+    is $locale->language,  'fr',    'language';
+    is $locale->script,    undef,   'script';
+    is $locale->region,    'BE',    'region';
+    is $locale->to_string, 'fr_BE', 'to_string';
 };
 
-subtest 'zh-Hant-HK' => sub {
+subtest "from_string('zh-Hant-HK')" => sub {
     plan tests => 4;
     my $locale = Unicode::Locale->from_string('zh-Hant-HK');
-    is $locale->id,       'zh-Hant-HK', 'id';
-    is $locale->language, 'zh',         'language';
-    is $locale->script,   'Hant',       'script';
-    is $locale->region,   'HK',         'region';
+    is $locale->language,  'zh',         'language';
+    is $locale->script,    'Hant',       'script';
+    is $locale->region,    'HK',         'region';
+    is $locale->to_string, 'zh_Hant_HK', 'to_string';
 };
 
 # 3.5.1 Unknown or Invalid Identifiers
 
-subtest 'und' => sub {
+subtest "from_string('und')" => sub {
     plan tests => 4;
     my $locale = Unicode::Locale->from_string('und');
-    is $locale->id,       'und', 'id';
-    is $locale->language, 'und', 'language';
-    is $locale->script,   undef, 'script';
-    is $locale->region,   undef, 'region';
+    is $locale->language,  'und', 'language';
+    is $locale->script,    undef, 'script';
+    is $locale->region,    undef, 'region';
+    is $locale->to_string, 'und', 'to_string';
 };
 
-subtest 'und_Grek' => sub {
+subtest "from_string('und_Grek')" => sub {
     plan tests => 4;
     my $locale = Unicode::Locale->from_string('und_Grek');
-    is $locale->id,       'und_Grek', 'id';
-    is $locale->language, 'und',      'language';
-    is $locale->script,   'Grek',     'script';
-    is $locale->region,   undef,      'region';
+    is $locale->language,  'und',      'language';
+    is $locale->script,    'Grek',     'script';
+    is $locale->region,    undef,      'region';
+    is $locale->to_string, 'und_Grek', 'to_string';
 };
 
-subtest 'und_US' => sub {
+subtest "from_string('und_US')" => sub {
     plan tests => 4;
     my $locale = Unicode::Locale->from_string('und_US');
-    is $locale->id,       'und_US', 'id';
-    is $locale->language, 'und',    'language';
-    is $locale->script,   undef,    'script';
-    is $locale->region,   'US',     'region';
+    is $locale->language,  'und',    'language';
+    is $locale->script,    undef,    'script';
+    is $locale->region,    'US',     'region';
+    is $locale->to_string, 'und_US', 'to_string';
 };
 
 # 3.6.4 U Extension Data Files
 
-subtest 'en-u-vt-00A4' => sub {
+subtest "from_string('en-u-vt-00A4')" => sub {
     plan tests => 4;
     my $locale = Unicode::Locale->from_string('en-u-vt-00A4');
-    is $locale->id,       'en-u-vt-00A4', 'id';
-    is $locale->language, 'en',           'language';
-    is $locale->script,   undef,          'script';
-    is $locale->region,   undef,          'region';
+    is $locale->language,  'en',           'language';
+    is $locale->script,    undef,          'script';
+    is $locale->region,    undef,          'region';
+    is $locale->to_string, 'en_u_vt_00A4', 'to_string';
 };
 
 # 5 XML Format
 
-subtest 'af-t-k0-android' => sub {
+subtest "from_string('af-t-k0-android')" => sub {
     plan tests => 4;
     my $locale = Unicode::Locale->from_string('af-t-k0-android');
-    is $locale->id,       'af-t-k0-android', 'id';
-    is $locale->language, 'af',              'language';
-    is $locale->script,   undef,             'script';
-    is $locale->region,   undef,             'region';
+    is $locale->language,  'af',              'language';
+    is $locale->script,    undef,             'script';
+    is $locale->region,    undef,             'region';
+    is $locale->to_string, 'af_t_k0_android', 'to_string';
 };

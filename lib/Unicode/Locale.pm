@@ -8,8 +8,14 @@ use namespace::clean;
 
 our $VERSION = '0.00_1';
 
-has id => (
-    is => 'ro',
+has _id => (
+    is      => 'lazy',
+    builder => sub {
+        join '_',
+        grep { defined }
+         map { $_[0]->$_ }
+          qw { language script region }
+    },
 );
 
 has language => (
@@ -35,11 +41,16 @@ sub from_string {
     }xi;
 
     $class->new(
-        id       => $id,
-        language => $language,
-        script   => $script,
-        region   => $region,
-    )
+        defined $language ? ( language =>         lc $language ) : (),
+        defined $script   ? ( script   => ucfirst lc $script   ) : (),
+        defined $region   ? ( region   =>         uc $region   ) : (),
+    );
+}
+
+sub to_string {
+    my ($self) = @_;
+
+    return $self->_id;
 }
 
 1;
@@ -73,19 +84,23 @@ This document describes Unicode::Locale v0.00_1.
 
 =over
 
-=item primary_language
-
-=item extended_language
+=item language
 
 =item script
 
 =item region
 
-=item variant
+=back
 
-=item extension
+=head2 Methods
 
-=item private_use
+=over
+
+=item new
+
+=item from_string
+
+=item to_string
 
 =back
 
