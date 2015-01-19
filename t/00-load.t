@@ -3,15 +3,15 @@ use open qw( :encoding(UTF-8) :std );
 use English;
 use Test::Most tests => 3;
 
-BEGIN { use_ok 'Locale::Identifier' }
+BEGIN { use_ok 'Unicode::Locale' }
 
 diag join ', ' => (
-    "Locale::Identifier v$Locale::Identifier::VERSION",
+    "Unicode::Locale v$Unicode::Locale::VERSION",
     "Moo v$Moo::VERSION",
     "Perl $PERL_VERSION ($EXECUTABLE_NAME)",
 );
 
-my $obj = new_ok 'Locale::Identifier';
+my $obj = new_ok 'Unicode::Locale';
 
 can_ok $obj, qw(
     new from_string id language script region

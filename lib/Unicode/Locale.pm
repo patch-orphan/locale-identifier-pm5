@@ -1,4 +1,4 @@
-package Locale::Identifier;
+package Unicode::Locale;
 
 use v5.8.1;
 use utf8;
@@ -50,17 +50,17 @@ __END__
 
 =head1 NAME
 
-Locale::Identifier - Locale identifier parser and formatter
+Unicode::Locale - Unicode locale identifier
 
 =head1 VERSION
 
-This document describes Locale::Identifier v0.00_1.
+This document describes Unicode::Locale v0.00_1.
 
 =head1 SYNOPSIS
 
-    use Locale::Identifier;
+    use Unicode::Locale;
 
-    $locale = Locale::Identifier->new('fr-CA');
+    $locale = Unicode::Locale->from_string('fr-CA');
 
     say $locale->language;  # fr
     say $locale->region;    # CA

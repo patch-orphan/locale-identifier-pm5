@@ -1,9 +1,9 @@
 Build.PL
 Changes
 INSTALL
-lib/Locale/Identifier.pm
+lib/Unicode/Locale.pm
 MANIFEST			This list of files
 README.md
 t/00-load.t
-t/langtag.t
-t/uts35.t
+t/ietf.t
+t/unicode.t

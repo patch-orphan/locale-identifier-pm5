@@ -1,7 +1,7 @@
 use utf8;
 use open qw( :encoding(UTF-8) :std );
 use Test::Most tests => 13;
-use Locale::Identifier;
+use Unicode::Locale;
 
 # Tests adapted from examples in:
 # UTS #35: Unicode LDML, Part 1: Core
@@ -11,7 +11,7 @@ use Locale::Identifier;
 
 subtest 'root' => sub {
     plan tests => 4;
-    my $locale = Locale::Identifier->from_string('root');
+    my $locale = Unicode::Locale->from_string('root');
     is $locale->id,       'root', 'id';
     is $locale->language, 'root', 'language';
     is $locale->script,   undef,  'script';
@@ -20,7 +20,7 @@ subtest 'root' => sub {
 
 subtest 'en-US' => sub {
     plan tests => 4;
-    my $locale = Locale::Identifier->from_string('en-US');
+    my $locale = Unicode::Locale->from_string('en-US');
     is $locale->id,       'en-US', 'id';
     is $locale->language, 'en',    'language';
     is $locale->script,   undef,   'script';
@@ -29,7 +29,7 @@ subtest 'en-US' => sub {
 
 subtest 'en_GB' => sub {
     plan tests => 4;
-    my $locale = Locale::Identifier->from_string('en_GB');
+    my $locale = Unicode::Locale->from_string('en_GB');
     is $locale->id,       'en_GB', 'id';
     is $locale->language, 'en',    'language';
     is $locale->script,   undef,   'script';
@@ -38,7 +38,7 @@ subtest 'en_GB' => sub {
 
 subtest 'es-419' => sub {
     plan tests => 4;
-    my $locale = Locale::Identifier->from_string('es-419');
+    my $locale = Unicode::Locale->from_string('es-419');
     is $locale->id,       'es-419', 'id';
     is $locale->language, 'es',     'language';
     is $locale->script,   undef,    'script';
@@ -47,7 +47,7 @@ subtest 'es-419' => sub {
 
 subtest 'uz-Cyrl' => sub {
     plan tests => 4;
-    my $locale = Locale::Identifier->from_string('uz-Cyrl');
+    my $locale = Unicode::Locale->from_string('uz-Cyrl');
     is $locale->id,       'uz-Cyrl', 'id';
     is $locale->language, 'uz',      'language';
     is $locale->script,   'Cyrl',    'script';
@@ -58,7 +58,7 @@ subtest 'uz-Cyrl' => sub {
 
 subtest 'en' => sub {
     plan tests => 4;
-    my $locale = Locale::Identifier->from_string('en');
+    my $locale = Unicode::Locale->from_string('en');
     is $locale->id,       'en',  'id';
     is $locale->language, 'en',  'language';
     is $locale->script,   undef, 'script';
@@ -67,7 +67,7 @@ subtest 'en' => sub {
 
 subtest 'fr_BE' => sub {
     plan tests => 4;
-    my $locale = Locale::Identifier->from_string('fr_BE');
+    my $locale = Unicode::Locale->from_string('fr_BE');
     is $locale->id,       'fr_BE', 'id';
     is $locale->language, 'fr',    'language';
     is $locale->script,   undef,   'script';
@@ -76,7 +76,7 @@ subtest 'fr_BE' => sub {
 
 subtest 'zh-Hant-HK' => sub {
     plan tests => 4;
-    my $locale = Locale::Identifier->from_string('zh-Hant-HK');
+    my $locale = Unicode::Locale->from_string('zh-Hant-HK');
     is $locale->id,       'zh-Hant-HK', 'id';
     is $locale->language, 'zh',         'language';
     is $locale->script,   'Hant',       'script';
@@ -87,7 +87,7 @@ subtest 'zh-Hant-HK' => sub {
 
 subtest 'und' => sub {
     plan tests => 4;
-    my $locale = Locale::Identifier->from_string('und');
+    my $locale = Unicode::Locale->from_string('und');
     is $locale->id,       'und', 'id';
     is $locale->language, 'und', 'language';
     is $locale->script,   undef, 'script';
@@ -96,7 +96,7 @@ subtest 'und' => sub {
 
 subtest 'und_Grek' => sub {
     plan tests => 4;
-    my $locale = Locale::Identifier->from_string('und_Grek');
+    my $locale = Unicode::Locale->from_string('und_Grek');
     is $locale->id,       'und_Grek', 'id';
     is $locale->language, 'und',      'language';
     is $locale->script,   'Grek',     'script';
@@ -105,7 +105,7 @@ subtest 'und_Grek' => sub {
 
 subtest 'und_US' => sub {
     plan tests => 4;
-    my $locale = Locale::Identifier->from_string('und_US');
+    my $locale = Unicode::Locale->from_string('und_US');
     is $locale->id,       'und_US', 'id';
     is $locale->language, 'und',    'language';
     is $locale->script,   undef,    'script';
@@ -116,7 +116,7 @@ subtest 'und_US' => sub {
 
 subtest 'en-u-vt-00A4' => sub {
     plan tests => 4;
-    my $locale = Locale::Identifier->from_string('en-u-vt-00A4');
+    my $locale = Unicode::Locale->from_string('en-u-vt-00A4');
     is $locale->id,       'en-u-vt-00A4', 'id';
     is $locale->language, 'en',           'language';
     is $locale->script,   undef,          'script';
@@ -127,7 +127,7 @@ subtest 'en-u-vt-00A4' => sub {
 
 subtest 'af-t-k0-android' => sub {
     plan tests => 4;
-    my $locale = Locale::Identifier->from_string('af-t-k0-android');
+    my $locale = Unicode::Locale->from_string('af-t-k0-android');
     is $locale->id,       'af-t-k0-android', 'id';
     is $locale->language, 'af',              'language';
     is $locale->script,   undef,             'script';
