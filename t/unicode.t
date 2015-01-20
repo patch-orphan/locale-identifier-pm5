@@ -1,6 +1,6 @@
 use utf8;
 use open qw( :encoding(UTF-8) :std );
-use Test::Most tests => 13;
+use Test::Most tests => 14;
 use Unicode::Locale;
 
 # Tests adapted from examples in:
@@ -12,7 +12,7 @@ use Unicode::Locale;
 subtest "from_string('root')" => sub {
     plan tests => 4;
     my $locale = Unicode::Locale->from_string('root');
-    is $locale->language,  'root', 'language';
+    is $locale->language,  'und',  'language';
     is $locale->script,    undef,  'script';
     is $locale->region,    undef,  'region';
     is $locale->to_string, 'root', 'to_string';
@@ -54,6 +54,17 @@ subtest "from_string('uz-Cyrl')" => sub {
     is $locale->to_string, 'uz_Cyrl', 'to_string';
 };
 
+# 3.3.1 BCP 47 Language Tag Conversion
+
+subtest "from_string('und-US')" => sub {
+    plan tests => 4;
+    my $locale = Unicode::Locale->from_string('und-US');
+    is $locale->language,  'und',    'language';
+    is $locale->script,    undef,    'script';
+    is $locale->region,    'US',     'region';
+    is $locale->to_string, 'und_US', 'to_string';
+};
+
 # 3.4 Language Identifier Field Definitions
 
 subtest "from_string('en')" => sub {
@@ -88,10 +99,10 @@ subtest "from_string('zh-Hant-HK')" => sub {
 subtest "from_string('und')" => sub {
     plan tests => 4;
     my $locale = Unicode::Locale->from_string('und');
-    is $locale->language,  'und', 'language';
-    is $locale->script,    undef, 'script';
-    is $locale->region,    undef, 'region';
-    is $locale->to_string, 'und', 'to_string';
+    is $locale->language,  'und',  'language';
+    is $locale->script,    undef,  'script';
+    is $locale->region,    undef,  'region';
+    is $locale->to_string, 'root', 'to_string';
 };
 
 subtest "from_string('und_Grek')" => sub {

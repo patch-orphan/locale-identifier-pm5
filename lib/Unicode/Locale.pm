@@ -11,10 +11,11 @@ our $VERSION = '0.00_1';
 has _id => (
     is      => 'lazy',
     builder => sub {
-        join '_',
-        grep { defined }
-         map { $_[0]->$_ }
-          qw { language script region }
+        my ($self) = @_;
+        my $id = join '_', grep { defined } (
+            $self->language, $self->script, $self->region
+        );
+        return $id eq 'und' ? 'root' : $id;
     },
 );
 
@@ -40,11 +41,21 @@ sub from_string {
         (?= _ | \b )
     }xi;
 
-    $class->new(
-        defined $language ? ( language =>         lc $language ) : (),
-        defined $script   ? ( script   => ucfirst lc $script   ) : (),
-        defined $region   ? ( region   =>         uc $region   ) : (),
-    );
+    my %subtags;
+
+    if (defined $language) {
+        $subtags{language} = lc $language eq 'root' ? 'und' : lc $language;
+    }
+
+    if (defined $script) {
+        $subtags{script} = ucfirst lc $script;
+    }
+
+    if (defined $region) {
+        $subtags{region} = uc $region;
+    }
+
+    $class->new(\%subtags);
 }
 
 sub to_string {
