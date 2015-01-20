@@ -16,5 +16,6 @@ my $obj = new_ok 'Unicode::Locale';
 can_ok $obj, qw(
     new
     language script region
+    u_extension u_extension
     from_string to_string
 );

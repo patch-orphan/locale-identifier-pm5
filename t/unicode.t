@@ -1,6 +1,6 @@
 use utf8;
 use open qw( :encoding(UTF-8) :std );
-use Test::Most tests => 14;
+use Test::Most tests => 16;
 use Unicode::Locale;
 
 # Tests adapted from examples in:
@@ -65,6 +65,16 @@ subtest "from_string('und-US')" => sub {
     is $locale->to_string, 'und_US', 'to_string';
 };
 
+subtest "from_string('und-u-cu-USD')" => sub {
+    plan tests => 5;
+    my $locale = Unicode::Locale->from_string('und-u-cu-USD');
+    is $locale->language,    'und',           'language';
+    is $locale->script,      undef,           'script';
+    is $locale->region,      undef,           'region';
+    is $locale->u_extension, 'cu_usd',        'u_extension';
+    is $locale->to_string,   'root_u_cu_usd', 'to_string';
+};
+
 # 3.4 Language Identifier Field Definitions
 
 subtest "from_string('en')" => sub {
@@ -123,24 +133,38 @@ subtest "from_string('und_US')" => sub {
     is $locale->to_string, 'und_US', 'to_string';
 };
 
+# 3.6 Unicode BCP 47 U Extension
+
+subtest "from_string('und-u-foo-bar-nu-thai-ca-buddhist-kk-true')" => sub {
+    plan tests => 5;
+    my $locale = Unicode::Locale->from_string('und-u-foo-bar-nu-thai-ca-buddhist-kk-true');
+    is $locale->language,    'und',                                  'language';
+    is $locale->script,      undef,                                  'script';
+    is $locale->region,      undef,                                  'region';
+    is $locale->u_extension, 'bar_foo_ca_buddhist_kk_nu_thai',       'u_extension';
+    is $locale->to_string,   'und_u_bar_foo_ca_buddhist_kk_nu_thai', 'to_string';
+};
+
 # 3.6.4 U Extension Data Files
 
 subtest "from_string('en-u-vt-00A4')" => sub {
-    plan tests => 4;
+    plan tests => 5;
     my $locale = Unicode::Locale->from_string('en-u-vt-00A4');
-    is $locale->language,  'en',           'language';
-    is $locale->script,    undef,          'script';
-    is $locale->region,    undef,          'region';
-    is $locale->to_string, 'en_u_vt_00A4', 'to_string';
+    is $locale->language,    'en',           'language';
+    is $locale->script,      undef,          'script';
+    is $locale->region,      undef,          'region';
+    is $locale->u_extension, 'vt_00a4',      'u_extension';
+    is $locale->to_string,   'en_u_vt_00a4', 'to_string';
 };
 
 # 5 XML Format
 
 subtest "from_string('af-t-k0-android')" => sub {
-    plan tests => 4;
+    plan tests => 5;
     my $locale = Unicode::Locale->from_string('af-t-k0-android');
-    is $locale->language,  'af',              'language';
-    is $locale->script,    undef,             'script';
-    is $locale->region,    undef,             'region';
-    is $locale->to_string, 'af_t_k0_android', 'to_string';
+    is $locale->language,    'af',              'language';
+    is $locale->script,      undef,             'script';
+    is $locale->region,      undef,             'region';
+    is $locale->t_extension, 'k0_android',      't_extension';
+    is $locale->to_string,   'af_t_k0_android', 'to_string';
 };

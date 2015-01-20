@@ -12,10 +12,19 @@ has _id => (
     is      => 'lazy',
     builder => sub {
         my ($self) = @_;
-        my $id = join '_', grep { defined } (
-            $self->language, $self->script, $self->region
+        return join '_', grep { defined } (
+            $self->language eq 'und' && !defined $self->script && !defined $self->region
+                ? 'root'
+                : $self->language,
+            $self->script,
+            $self->region,
+            defined $self->u_extension
+                ? 'u_' . $self->u_extension
+                : undef,
+            defined $self->t_extension
+                ? 't_' . $self->t_extension
+                : undef,
         );
-        return $id eq 'und' ? 'root' : $id;
     },
 );
 
@@ -31,14 +40,27 @@ has region => (
     is => 'ro',
 );
 
+has u_extension => (
+    is => 'ro',
+);
+
+has t_extension => (
+    is => 'ro',
+);
+
 sub from_string {
     my ($class, $id) = @_;
 
-    my ($language, $script, $region) = $id =~ m{
-        ^        ( [a-z]{2,8}          )     # language
-        (?: [_-] ( [a-z]{4}            ) )?  # script
-        (?: [_-] ( [a-z]{2} | [0-9]{3} ) )?  # region
-        (?= _ | \b )
+    $id =~ tr{-}{_};
+
+    my ($language, $script, $region, $u_extension, $t_extension) = $id =~ m{
+        \A
+                ( [a-z]{2,8}          )     # language
+        (?: _   ( [a-z]{4}            ) )?  # script
+        (?: _   ( [a-z]{2} | [0-9]{3} ) )?  # region
+        (?: _u_ ( [a-z0-9_]+          ) )?  # u extension
+        (?: _t_ ( [a-z0-9_]+          ) )?  # t extension
+        \z
     }xi;
 
     my %subtags;
@@ -53,6 +75,14 @@ sub from_string {
 
     if (defined $region) {
         $subtags{region} = uc $region;
+    }
+
+    if (defined $u_extension) {
+        $subtags{u_extension} = lc $u_extension;
+    }
+
+    if (defined $t_extension) {
+        $subtags{t_extension} = lc $t_extension;
     }
 
     $class->new(\%subtags);
@@ -100,6 +130,10 @@ This document describes Unicode::Locale v0.00_1.
 =item script
 
 =item region
+
+=item u_extension
+
+=item t_extension
 
 =back
 
